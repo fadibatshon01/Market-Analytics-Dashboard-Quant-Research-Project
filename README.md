@@ -1,1 +1,1 @@
-Market Analytics Dashboard - Quant Research Project
+# Market Analytics Dashboard - Quant Research Project
