@@ -33,9 +33,6 @@ Everything runs inside Google Sheets: fast, transparent, reproducible, and no ex
 - Built a **single-sheet backtester** that replays daily or weekly historical closes through model rules.  
 - Logs results in a structured format:  
 Date | Ticker | Close | Action | Horizon | Tolerance | Accuracy
-
-markdown
-Copy code
 - Evaluates hit rates, counts, averages, and one-sided binomial p-values to test statistical significance.  
 
 ### 📈 Evaluation Framework  
@@ -55,8 +52,6 @@ Copy code
 ---
 
 ## 📐 Architecture Overview  
-
-**Data Flow**
 
 **Core Components**
 
