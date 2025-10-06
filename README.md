@@ -1,8 +1,8 @@
 # 🧠 Market Signals Analytics Dashboard  
 **Google Sheets + Apps Script | Real-Time Signal Generation, Backtesting & Automation**
 
-![Project Banner](https://github.com/yourusername/yourrepo/assets/banner.png)  
-*(Add your own banner or chart image here to make the page more engaging!)*
+![Project Banner]()  
+
 
 ---
 
