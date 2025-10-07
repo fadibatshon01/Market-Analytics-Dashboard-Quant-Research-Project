@@ -499,7 +499,6 @@ function clearBacktest(){
 </details>
 
 <hr/>
-</p>
 
 <!-- Clsoing -->
 <h2 id="Closing"> Closing</h2>
