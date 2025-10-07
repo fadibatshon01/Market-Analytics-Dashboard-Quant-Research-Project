@@ -320,10 +320,13 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
 
 ## Appendices
 <font color="#0f172a">
+
 <details>
   <summary><strong>Appendix A — Key Formulas (copy-ready)</strong></summary>
-  <h4>A.1 Date range controls (Dashboard)</h4>
-  <pre><code>C21 (Start Date; EDATE version with 4-year option)
+
+#### A.1 Date range controls (Dashboard)
+```text
+C21 (Start Date; EDATE version with 4-year option)
 =IF($C$20="YTD",
   DATE(YEAR(TODAY()),1,1),
   IF($C$20="Custom",
@@ -446,9 +449,12 @@ IF(AND($P$3&gt;$P$4,$P$5&lt;0.05),
 "⚠️ Not significant: accuracy "&amp;TEXT($P$3,"0.00%")&amp;" vs baseline "&amp;TEXT($P$4,"0.00%")&amp;" (p="&amp;TEXT($P$5,"0.0000")&amp;")."))</code></pre>
 </details>
 
+````markdown
 <details id="appendix-b--apps-script-compact-skeleton">
   <summary><strong>Appendix B — Apps Script (compact skeleton)</strong></summary>
-  <pre><code>function onOpen(){
+
+```text
+function onOpen(){
   SpreadsheetApp.getUi()
     .createMenu('Backtest')
     .addItem('Run WEEKLY (1 ticker)','runBacktestWeeklyOneTicker')
@@ -456,7 +462,6 @@ IF(AND($P$3&gt;$P$4,$P$5&lt;0.05),
     .addItem('Clear Backtest','clearBacktest')
     .addToUi();
 }
-
 function runBacktestWeeklyOneTicker(){
   const ss=SpreadsheetApp.getActive(), dash=ss.getSheetByName('Dashboard');
   const out=ss.getSheetByName('Backtest')||ss.insertSheet('Backtest');
