@@ -150,11 +150,6 @@ This project delivers an end-to-end analytics workflow for market signal researc
       <li><strong>C25</strong> – Price input used by the model (live formula; overwritten in backtest).</li>
     </ul>
   </div>
-
-<p align="center">
-  <img src="images/Pipeline.png">
-</p>
-  
   <div>
     <ul>
       <li><strong>AA:AB</strong> – History spill from <code>GOOGLEFINANCE</code>: <em>Date | Close</em>.</li>
@@ -190,9 +185,6 @@ This project delivers an end-to-end analytics workflow for market signal researc
 </ul>
 <p>Optional proof cell prints a single sentence when the model beats the baseline significantly.</p>
 
-<p align="center">
-  <img src="images/Testing table.png" width="600">
-</p>
 
 <!-- BACKTEST ENGINE -->
 <h2 id="3-backtesting-engine-apps-script">3) Backtesting Engine (Apps Script)</h2>
@@ -224,10 +216,6 @@ Two modes are supported:
     <li>Explicitly sets an “as-of” date to eliminate future leakage.</li>
   </ul>
 </div>
-
-<p align="center">
-  <img src="images/Data.png">
-</p>
 
 <!-- EVALUATION -->
 <h2 id="4-evaluation-methodology">4) Evaluation Methodology</h2>
@@ -297,6 +285,10 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
 </div>
 
 <p align="center">
+  <img src="images/Pipeline.png">
+</p>
+  
+<p align="center">
   <img src="images/1.png" alt="1" width="32%">
   <img src="images/2.png" alt="2" width="32%">
   <img src="images/3.png" alt="3" width="32%">
@@ -310,6 +302,10 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
 
 <p align="center">
   <img src="images/Buy:sell.png">
+</p>
+
+<p align="center">
+  <img src="images/Data.png">
 </p>
 
 <p align="center">
