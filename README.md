@@ -320,7 +320,7 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
 
 <!-- APPENDICES -->
 <h2 id="appendices">Appendices</h2>
-
+<div style="color:#0f172a;">
 <details id="appendix-a--key-formulas-copy-ready">
   <summary><strong>Appendix A — Key Formulas (copy-ready)</strong></summary>
   <h4>A.1 Date range controls (Dashboard)</h4>
@@ -504,6 +504,7 @@ function clearBacktest(){
   if(out) out.clearContents().appendRow(['Date','Ticker','Close','Action']);
 }</code></pre>
 </details>
+</div>
 
 <hr/>
 
