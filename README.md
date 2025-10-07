@@ -322,7 +322,7 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
 <font color="#0f172a">
 
 <details>
-  <summary><strong>Appendix A — Key Formulas (copy-ready)</strong></summary>
+<summary><strong>Appendix A — Key Formulas (copy-ready)</strong></summary>
 
 #### A.1 Date range controls (Dashboard)
 ```text
@@ -355,17 +355,19 @@ C23 (Days in range)
     MAX(0,$C$24-$C$22),
     $C$24 - $C$21
   )
-)</code></pre>
-
-  <h4>A.2 History &amp; returns (Dashboard)</h4>
-  <pre><code>AA2 (history spill)
+)
+A.2 History & returns (Dashboard)
+text
+Copy code
+AA2 (history spill)
 =GOOGLEFINANCE($C$19,"close",$C$21,$C$24,"DAILY")
 
 AC3 (returns)
-=ARRAYFORMULA(IF(ROW(AB3:AB)=ROW(AB3),"",IF(AB3:AB="","",AB3:AB/AB2:AB-1)))</code></pre>
-
-  <h4>A.3 Helper metrics (Dashboard!AD2:AD10; non-volatile, guarded)</h4>
-  <pre><code>AD2 – count of dates
+=ARRAYFORMULA(IF(ROW(AB3:AB)=ROW(AB3),"",IF(AB3:AB="","",AB3:AB/AB2:AB-1)))
+A.3 Helper metrics (Dashboard!AD2:AD10; non-volatile, guarded)
+text
+Copy code
+AD2 – count of dates
 =COUNT($AA$3:$AA)
 
 AD3 – previous close
@@ -384,7 +386,7 @@ AD7 – MA10 (2 days ago)
 =IF($AD$2>=3, AVERAGE( INDEX($AB$3:$AB, MAX(1,$AD$2-11)) : INDEX($AB$3:$AB,$AD$2-2) ), )
 
 AD8 – Volatility % (annualized, last up to 30 returns)
-=IF(COUNT($AC$3:$AC)&lt;2, "",
+=IF(COUNT($AC$3:$AC)<2, "",
  STDEV( OFFSET($AC$3, MAX(0, COUNT($AC$3:$AC)-30), 0, MIN(30, COUNT($AC$3:$AC)), 1) ) * SQRT(252) * 100
 )
 
@@ -392,21 +394,22 @@ AD9 – 52-week high
 =IF($AD$2>=1, MAX( INDEX($AB$3:$AB, MAX(1,$AD$2-251)) : INDEX($AB$3:$AB,$AD$2) ), )
 
 AD10 – 52-week low
-=IF($AD$2>=1, MIN( INDEX($AB$3:$AB, MAX(1,$AD$2-251)) : INDEX($AB$3:$AB,$AD$2) ), )</code></pre>
-
-  <h4>A.4 Rules &amp; decision (Dashboard)</h4>
-  <pre><code>// Examples for C5:C15 (adapt to your preferences)
-C5  =AND($C$25>$AD$4,$C$25>$AD$5)                // above MA10 &amp; MA30
-C6  =AND($C$25&lt;$AD$4,$C$25&lt;$AD$5)                // below MA10 &amp; MA30
-C7  =$AD$8&gt;30                                    // high vol flag
-C8  =$C$25&gt;$AD$9                                 // above 52-week high
-C9  =$C$25&lt;$AD$10                                // below 52-week low
-C10 =AND($AD$8&lt;=20, ABS($AD$4-$AD$5)/AVERAGE($AD$4,$AD$5) &lt; 0.005)
-C11 =AND($AD$4&gt;$AD$6,$AD$6&gt;$AD$7)                // MA10 rising
-C12 =AND($AD$4&lt;$AD$6,$AD$6&lt;$AD$7)                // MA10 falling
-C13 =AND($C$25&gt;=MIN($AD$4,$AD$5), $C$25&lt;=MAX($AD$4,$AD$5))
-C14 =IFERROR($C$25/$AD$3-1&gt;0.03,FALSE)           // gap up &gt; 3%
-C15 =IFERROR($C$25/$AD$3-1&lt;-0.03,FALSE)          // gap down &lt; 3%
+=IF($AD$2>=1, MIN( INDEX($AB$3:$AB, MAX(1,$AD$2-251)) : INDEX($AB$3:$AB,$AD$2) ), )
+A.4 Rules & decision (Dashboard)
+text
+Copy code
+// Examples for C5:C15 (adapt to your preferences)
+C5  =AND($C$25>$AD$4,$C$25>$AD$5)                // above MA10 & MA30
+C6  =AND($C$25<$AD$4,$C$25<$AD$5)                // below MA10 & MA30
+C7  =$AD$8>30                                    // high vol flag
+C8  =$C$25>$AD$9                                 // above 52-week high
+C9  =$C$25<$AD$10                                // below 52-week low
+C10 =AND($AD$8<=20, ABS($AD$4-$AD$5)/AVERAGE($AD$4,$AD$5) < 0.005)
+C11 =AND($AD$4>$AD$6,$AD$6>$AD$7)                // MA10 rising
+C12 =AND($AD$4<$AD$6,$AD$6<$AD$7)                // MA10 falling
+C13 =AND($C$25>=MIN($AD$4,$AD$5), $C$25<=MAX($AD$4,$AD$5))
+C14 =IFERROR($C$25/$AD$3-1>0.03,FALSE)           // gap up > 3%
+C15 =IFERROR($C$25/$AD$3-1<-0.03,FALSE)          // gap down < 3%
 
 E16 (decision)
 =IFS(
@@ -418,42 +421,40 @@ E16 (decision)
   C7,  "Hold",
   C13, "Hold",
   TRUE,"Hold"
-)</code></pre>
-
-  <h4>A.5 Backtest derived columns (Backtest)</h4>
-  <pre><code>// Settings: J1 = horizon (e.g., 1), J2 = tolerance (e.g., 0 or 0.001).
+)
+A.5 Backtest derived columns (Backtest)
+text
+Copy code
+// Settings: J1 = horizon (e.g., 1), J2 = tolerance (e.g., 0 or 0.001).
 
 // Drag-friendly version
-E2 =IF(INDEX($B:$B,ROW()+$J$1)&lt;&gt;B2,"",INDEX($A:$A,ROW()+$J$1))
+E2 =IF(INDEX($B:$B,ROW()+$J$1)<>B2,"",INDEX($A:$A,ROW()+$J$1))
 F2 =IF(E2="","",INDEX($C:$C,ROW()+$J$1))
 G2 =IF(F2="","",F2/C2-1)
-H2 =IF(G2="","",IF(D2="Buy",N(G2&gt;=$J$2),IF(D2="Sell",N(G2&lt;=-$J$2),IF(D2="Hold",N(G2&gt;=$J$2),""))))
+H2 =IF(G2="","",IF(D2="Buy",N(G2>=$J$2),IF(D2="Sell",N(G2<=-$J$2),IF(D2="Hold",N(G2>=$J$2),""))))
 
 // Strict Hold variant (optional)
 H2 =IF(G2="","",
- IF(D2="Buy",  N(G2&gt;$J$2),
- IF(D2="Sell", N(G2&lt;-$J$2),
- IF(D2="Hold", N(ABS(G2)&lt;=$J$2),""))))</code></pre>
-
-  <h4>A.6 Summary cells &amp; proof (Backtest, labels in O, values in P)</h4>
-  <pre><code>P1 =COUNT($H$2:$H)                                      // total signals
+ IF(D2="Buy",  N(G2>$J$2),
+ IF(D2="Sell", N(G2<$J$2),
+ IF(D2="Hold", N(ABS(G2)<=$J$2),""))))
+A.6 Summary cells & proof (Backtest)
+text
+Copy code
+P1 =COUNT($H$2:$H)                                      // total signals
 P2 =SUM($H$2:$H)                                         // correct signals
-P3 =IFERROR($P$2/$P$1,"")                                // accuracy
-P4 =IFERROR( COUNTIF($G$2:$G,"&gt;="&amp;(-$J$2)) / COUNTIF($G$2:$G,"&lt;&gt;"), "")   // baseline
-P5 =IFERROR( 1 - BINOM.DIST($P$2-1,$P$1,$P$4,TRUE), "")  // one-sided p-value
+P3 =IFERROR($P$2/$P$1,"")                               // accuracy
+P4 =IFERROR( COUNTIF($G$2:$G,">="&(-$J$2)) / COUNTIF($G$2:$G,"<>"), "")   // baseline
+P5 =IFERROR( 1 - BINOM.DIST($P$2-1,$P$1,$P$4,TRUE), "") // one-sided p-value
 
 One-line proof (e.g., R1)
 =IF(OR($P$1=0,$P$4="",$P$3=""),"",
-IF(AND($P$3&gt;$P$4,$P$5&lt;0.05),
-"✅ Statistically significant improvement: "&amp;Dashboard!C19&amp;" ("&amp;$J$1&amp;"-step horizon, tol="&amp;TEXT($J$2,"0.0%")&amp;") achieved "&amp;TEXT($P$3,"0.00%")&amp;" accuracy across "&amp;$P$1&amp;" signals, beating baseline "&amp;TEXT($P$4,"0.00%")&amp;" (p="&amp;TEXT($P$5,"0.0000")&amp;").",
-"⚠️ Not significant: accuracy "&amp;TEXT($P$3,"0.00%")&amp;" vs baseline "&amp;TEXT($P$4,"0.00%")&amp;" (p="&amp;TEXT($P$5,"0.0000")&amp;")."))</code></pre>
-</details>
-
-````markdown
-<details id="appendix-b--apps-script-compact-skeleton">
-  <summary><strong>Appendix B — Apps Script (compact skeleton)</strong></summary>
-
-```text
+IF(AND($P$3>$P$4,$P$5<0.05),
+"✅ Statistically significant improvement: "&Dashboard!C19&" ("&$J$1&"-step horizon, tol="&TEXT($J$2,"0.0%")&") achieved "&TEXT($P$3,"0.00%")&" accuracy across "&$P$1&" signals, beating baseline "&TEXT($P$4,"0.00%")&" (p="&TEXT($P$5,"0.0000")&").",
+"⚠️ Not significant: accuracy "&TEXT($P$3,"0.00%")&" vs baseline "&TEXT($P$4,"0.00%")&" (p="&TEXT($P$5,"0.0000")&")."))
+</details> <details> <summary><strong>Appendix B — Apps Script (compact skeleton)</strong></summary>
+text
+Copy code
 function onOpen(){
   SpreadsheetApp.getUi()
     .createMenu('Backtest')
@@ -462,6 +463,7 @@ function onOpen(){
     .addItem('Clear Backtest','clearBacktest')
     .addToUi();
 }
+
 function runBacktestWeeklyOneTicker(){
   const ss=SpreadsheetApp.getActive(), dash=ss.getSheetByName('Dashboard');
   const out=ss.getSheetByName('Backtest')||ss.insertSheet('Backtest');
@@ -474,44 +476,83 @@ function runBacktestWeeklyOneTicker(){
 
   if(!waitForSpill_(dash,10000)) throw new Error('Spill AA:AB not ready');
   const table=dash.getRange('AA3:AB100000').getValues();
-  const days=[]; for(let i=0;i&lt;table.length;i++){const d=table[i][0],px=table[i][1];
-    if(!(d instanceof Date)) break; if(d&lt;start||d&gt;end||typeof px!=='number') continue; days.push([d,px]);}
+  const days=[]; 
+  for(let i=0;i<table.length;i++){
+    const d=table[i][0],px=table[i][1];
+    if(!(d instanceof Date)) break; 
+    if(d<start||d>end||typeof px!=='number') continue; 
+    days.push([d,px]);
+  }
   const weekly=pickWeeklyEndpoints_(days);
 
   const tkr=dash.getRange('C19').getValue();
-  const rows=[]; for(const [d,px] of weekly){
-    dash.getRange('C24').setValue(d); c25.setValue(px); SpreadsheetApp.flush();
+  const rows=[]; 
+  for(const [d,px] of weekly){
+    dash.getRange('C24').setValue(d); 
+    c25.setValue(px); 
+    SpreadsheetApp.flush();
     const action=normalizeAction_(dash.getRange('E16').getValue());
     rows.push([d,tkr,px,action]);
   }
-  if(rows.length){ const lr=out.getLastRow(); out.getRange(lr+1,1,rows.length,4).setValues(rows); }
-  dash.getRange('C24').setValue(origEnd); if(c25f) c25.setFormula(c25f); else c25.setValue(c25v);
+  if(rows.length){ 
+    const lr=out.getLastRow(); 
+    out.getRange(lr+1,1,rows.length,4).setValues(rows); 
+  }
+  dash.getRange('C24').setValue(origEnd); 
+  if(c25f) c25.setFormula(c25f); else c25.setValue(c25v);
 }
 
 function runBacktestDailyOneTicker(){ /* identical shape; iterate all days */ }
 
 function pickWeeklyEndpoints_(daysAsc){
-  const out=[]; let prev=null,last=null; for(const r of daysAsc){const d=r[0];
-    const key=isoWeekKey_(d); if(key!==prev&amp;&amp;last) out.push(last); prev=key; last=r;} if(last) out.push(last); return out; }
-function isoWeekKey_(d){ const x=new Date(d); x.setHours(0,0,0,0);
-  x.setDate(x.getDate()+3-((x.getDay()+6)%7)); const w1=new Date(x.getFullYear(),0,4);
+  const out=[]; 
+  let prev=null,last=null; 
+  for(const r of daysAsc){
+    const d=r[0];
+    const key=isoWeekKey_(d); 
+    if(key!==prev&&last) out.push(last); 
+    prev=key; 
+    last=r;
+  } 
+  if(last) out.push(last); 
+  return out; 
+}
+
+function isoWeekKey_(d){ 
+  const x=new Date(d); 
+  x.setHours(0,0,0,0);
+  x.setDate(x.getDate()+3-((x.getDay()+6)%7)); 
+  const w1=new Date(x.getFullYear(),0,4);
   const week=1+Math.round(((x-w1)/86400000-3+((w1.getDay()+6)%7))/7);
-  return x.getFullYear()+"-"+("0"+week).slice(-2); }
-function waitForSpill_(sh,ms){ const t=Date.now(); while(Date.now()-t&lt;ms){
-  SpreadsheetApp.flush(); const d=sh.getRange('AA3').getValue(), p=sh.getRange('AB3').getValue();
-  if(d instanceof Date &amp;&amp; typeof p==='number') return true; Utilities.sleep(200);} return false; }
-function normalizeAction_(v){ v=String(v||'').toLowerCase();
-  if(v.includes('sell')) return 'Sell'; if(v.includes('buy')) return 'Buy'; return 'Hold'; }
+  return x.getFullYear()+"-"+("0"+week).slice(-2); 
+}
+
+function waitForSpill_(sh,ms){ 
+  const t=Date.now(); 
+  while(Date.now()-t<ms){
+    SpreadsheetApp.flush(); 
+    const d=sh.getRange('AA3').getValue(), p=sh.getRange('AB3').getValue();
+    if(d instanceof Date && typeof p==='number') return true; 
+    Utilities.sleep(200);
+  } 
+  return false; 
+}
+
+function normalizeAction_(v){ 
+  v=String(v||'').toLowerCase();
+  if(v.includes('sell')) return 'Sell'; 
+  if(v.includes('buy')) return 'Buy'; 
+  return 'Hold'; 
+}
 
 function clearBacktest(){
   const ss=SpreadsheetApp.getActive(), out=ss.getSheetByName('Backtest');
   if(out) out.clearContents().appendRow(['Date','Ticker','Close','Action']);
-}</code></pre>
-</details> </font> ````
+}
+</details> </font>
 
-<hr/>
-
-<p class="kicker">Closing</p>
-<p>
-This dashboard gives you a single source of truth for signal logic, backtesting, and evaluation. It’s transparent, parameterized, fast enough to iterate in real time, and rigorous enough to support a defensible claim when results are genuinely better than baseline. The approach is intentionally modular so you can extend it—add P&amp;L, drawdowns, or per-ticker roll-ups—without changing the core model logic.
-</p>
+<!-- CLOSING -->
+<h2 id="8-CLOSING">8) CLOSING</h2>
+This dashboard gives you a single source of truth for signal logic, backtesting, and evaluation.
+It’s transparent, parameterized, fast enough to iterate in real time, and rigorous enough to support a defensible claim when results are genuinely better than baseline.
+The approach is intentionally modular so you can extend it—add P&L, drawdowns, or per-ticker roll-ups—without changing the core model logic.
