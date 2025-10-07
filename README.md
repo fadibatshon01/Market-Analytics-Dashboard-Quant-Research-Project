@@ -111,6 +111,11 @@ This project delivers an end-to-end analytics workflow for market signal researc
 <div class="card">
   <p><strong>Outcomes (high level):</strong> The model’s accuracy showed a material improvement over the baseline and this lift was statistically significant under conventional thresholds. The system runs fast (weekly endpoints), avoids common spreadsheet pitfalls, and is easy to extend.</p>
 </div>
+
+<p align="center">
+  <img src="images/Dashboard.png" width="600">
+</p>
+
 <!-- GOALS & SCOPE -->
 <h2 id="1-goals--scope">1) Goals & Scope</h2>
 
@@ -155,6 +160,11 @@ This project delivers an end-to-end analytics workflow for market signal researc
     </ul>
   </div>
 </div>
+
+<p align="center">
+  <img src="images/Pipeline.png" width="600">
+</p>
+
 <p><strong>Design choices</strong></p>
 <ul>
   <li>Helpers derive from the spilled history (<code>AA:AB</code>) to keep logic deterministic.</li>
@@ -178,6 +188,10 @@ This project delivers an end-to-end analytics workflow for market signal researc
   <li><strong>P1:P8</strong> – Summary cells (total, correct, accuracy, baseline, p-value, counts, etc.).</li>
 </ul>
 <p>Optional proof cell prints a single sentence when the model beats the baseline significantly.</p>
+
+<p align="center">
+  <img src="images/Testing table.png" width="600">
+</p>
 
 <!-- BACKTEST ENGINE -->
 <h2 id="3-backtesting-engine-apps-script">3) Backtesting Engine (Apps Script)</h2>
