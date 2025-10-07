@@ -499,8 +499,11 @@ function clearBacktest(){
 </details>
 
 <hr/>
+</p>
 
-<p class="kicker">Closing</p>
+<!-- Clsoing -->
+<h2 id="Closing">) Closing</h2>
+
 <p>
 This dashboard gives you a single source of truth for signal logic, backtesting, and evaluation. It’s transparent, parameterized, fast enough to iterate in real time, and rigorous enough to support a defensible claim when results are genuinely better than baseline. The approach is intentionally modular so you can extend it—add P&amp;L, drawdowns, or per-ticker roll-ups—without changing the core model logic.
 </p>
