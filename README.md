@@ -5,12 +5,14 @@
 
 **A powerful trading strategy system built entirely in Google Sheets — no programming knowledge required!**
 
+
+</div>
+
+---
 💡 Overview
 
 The Market Analytics Dashboard is a fully-automated financial analysis system designed to evaluate market behavior, backtest trading signals, and visualize real-time performance — all within Google Sheets.
 It combines the simplicity of spreadsheets with the power of automated data processing through Google Apps Script.
-
-</div>
 
 ---
 
