@@ -115,6 +115,9 @@ This project delivers an end-to-end analytics workflow for market signal researc
 <p align="center">
   <img src="images/Dashboard.png">
 </p>
+<p align="center">
+  <img src="images/Pipeline.png">
+</p>
 
 <!-- GOALS & SCOPE -->
 <h2 id="1-goals--scope">1) Goals & Scope</h2>
