@@ -507,8 +507,7 @@ function clearBacktest(){
   const ss=SpreadsheetApp.getActive(), out=ss.getSheetByName('Backtest');
   if(out) out.clearContents().appendRow(['Date','Ticker','Close','Action']);
 }</code></pre>
-</details>
-</font>
+</details> </font> ````
 
 <hr/>
 
