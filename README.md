@@ -73,20 +73,3 @@ Automatically computes **accuracy, baseline, and one-sided binomial p-values** f
 
 ---
 
-📂 Project Structure
-
-Algorithmic-Trading-Dashboard/
-├── README.md
-├── src/
-│   └── apps_script.js
-├── data/
-│   └── backtest_log.csv
-├── docs/
-│   └── images/
-│       ├── main-dashboard.png
-│       ├── decision-matrix.png
-│       ├── volatility.png
-│       ├── returns-histogram.png
-│       └── backtest-summary.png
-
-
