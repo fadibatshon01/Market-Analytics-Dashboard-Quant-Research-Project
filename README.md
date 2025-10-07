@@ -318,10 +318,9 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
   <li>Optional external data adapters (fundamentals, alt-data).</li>
 </ul>
 
-<!-- APPENDICES -->
-<h2 id="appendices">Appendices</h2>
+## Appendices
 <font color="#0f172a">
-<details id="appendix-a--key-formulas-copy-ready">
+<details>
   <summary><strong>Appendix A — Key Formulas (copy-ready)</strong></summary>
   <h4>A.1 Date range controls (Dashboard)</h4>
   <pre><code>C21 (Start Date; EDATE version with 4-year option)
@@ -505,7 +504,6 @@ function clearBacktest(){
 }</code></pre>
 </details>
 </font>
-
 </div>
 
 <hr/>
