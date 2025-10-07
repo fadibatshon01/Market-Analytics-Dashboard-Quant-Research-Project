@@ -161,6 +161,26 @@ This project delivers an end-to-end analytics workflow for market signal researc
   </div>
 </div>
 
+<p align="center">
+  <img src="images/Pipeline.png">
+</p>
+  
+<p align="center">
+  <img src="images/1.png" alt="1" width="32%">
+  <img src="images/2.png" alt="2" width="32%">
+  <img src="images/3.png" alt="3" width="32%">
+</p>
+
+<p align="center">
+  <img src="images/4.png" alt="1" width="32%">
+  <img src="images/5.png" alt="2" width="32%">
+  <img src="images/6.png" alt="3" width="32%">
+</p>
+
+<p align="center">
+  <img src="images/Buy:sell.png">
+</p>
+
 <p><strong>Design choices</strong></p>
 <ul>
   <li>Helpers derive from the spilled history (<code>AA:AB</code>) to keep logic deterministic.</li>
@@ -217,6 +237,10 @@ Two modes are supported:
   </ul>
 </div>
 
+<p align="center">
+  <img src="images/Data.png">
+</p>
+
 <!-- EVALUATION -->
 <h2 id="4-evaluation-methodology">4) Evaluation Methodology</h2>
 
@@ -252,6 +276,10 @@ In this design it’s the fraction of periods where <code>next return ≥ −tol
 A one-cell formula synthesizes a narrative sentence—only when accuracy &gt; baseline and statistically significant—so results can be shared without manual calculation.
 </p>
 
+<p align="center">
+  <img src="images/Testing table.png">
+</p>
+
 <!-- RESULTS -->
 <h2 id="5-results">5) Results (general, number-free)</h2>
 <p>
@@ -283,34 +311,6 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
   <br/>
   <code>Statistically significant: AAPL (1-step horizon, tol=0.14%) achieved ~52.9% accuracy across 208 signals, beating baseline ~45.7% (one-sided binomial p≈0.0219).</code>
 </div>
-
-<p align="center">
-  <img src="images/Pipeline.png">
-</p>
-  
-<p align="center">
-  <img src="images/1.png" alt="1" width="32%">
-  <img src="images/2.png" alt="2" width="32%">
-  <img src="images/3.png" alt="3" width="32%">
-</p>
-
-<p align="center">
-  <img src="images/4.png" alt="1" width="32%">
-  <img src="images/5.png" alt="2" width="32%">
-  <img src="images/6.png" alt="3" width="32%">
-</p>
-
-<p align="center">
-  <img src="images/Buy:sell.png">
-</p>
-
-<p align="center">
-  <img src="images/Data.png">
-</p>
-
-<p align="center">
-  <img src="images/Testing table.png">
-</p>
 
 
 <!-- OPERATIONS -->
