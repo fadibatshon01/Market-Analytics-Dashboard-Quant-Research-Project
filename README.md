@@ -309,14 +309,6 @@ Across the evaluated window, the model’s <em>weekly next-bar</em> calls achiev
   <code>Statistically significant: AAPL (1-step horizon, tol=0.14%) achieved ~52.9% accuracy across 208 signals, beating baseline ~45.7% (one-sided binomial p≈0.0219).</code>
 </div>
 
-<p align="center">
-  <img src="images/Data.png">
-</p>
-
-<p align="center">
-  <img src="images/Testing table.png">
-</p>
-
 <!-- OPERATIONS -->
 <h2 id="6-operating-the-system">6) Operating the System</h2>
 <ol>
