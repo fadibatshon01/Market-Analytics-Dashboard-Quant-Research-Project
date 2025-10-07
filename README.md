@@ -509,7 +509,6 @@ function clearBacktest(){
 }</code></pre>
 </details>
 </font>
-</div>
 
 <hr/>
 
